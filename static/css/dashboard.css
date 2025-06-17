@@ -1,0 +1,76 @@
+:root {
+    --bg: #181a1b;
+    --fg: #e0e0e0;
+    --accent: #2d2f31;
+    --input-bg: #232526;
+    --input-border: #333;
+    --button-bg: #232526;
+    --button-hover: #141516;
+}
+
+body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Fira Mono', 'Consolas', 'Monaco', monospace;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background: var(--accent);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 8px #000a;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 500px;
+    background: var(--accent);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 16px #000a;
+}
+
+a.dashboard-link {
+    display: block;
+    text-decoration: none;
+    background: var(--button-bg);
+    color: var(--fg);
+    padding: 1rem;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: background 0.2s;
+    border: 1px solid var(--input-border);
+}
+
+a.dashboard-link:hover {
+    background: var(--button-hover);
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #888;
+}
