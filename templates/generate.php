@@ -71,7 +71,7 @@ $conn->close();
                                 $value = htmlspecialchars($values[$i]);
                                 $label = htmlspecialchars($labels[$i]);
                                 echo '<label class="radio-container">
-                                        <input type="radio" name="'.$id.'" value="'.$value.'">
+                                        <input type="radio" name="'.$id.'" value="'.$value.'" required>
                                         <span class="custom-radio"></span>
                                         '.$label.'
                                     </label>';
@@ -92,7 +92,7 @@ $conn->close();
                                 $value = htmlspecialchars($values[$i]);
                                 $label = htmlspecialchars($labels[$i]);
                                 echo '<label class="checkbox-container">
-                                        <input type="checkbox" name="'.$id.'[]" value="'.$value.'">
+                                        <input type="checkbox" name="'.$id.'[]" value="'.$value.'" required>
                                         <span class="custom-checkbox"></span>
                                         '.$label.'
                                     </label>';

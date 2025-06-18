@@ -1,0 +1,228 @@
+:root {
+    --bg: #181a1b;
+    --fg: #e0e0e0;
+    --accent: #2d2f31;
+    --input-bg: #232526;
+    --input-border: #333;
+    --button-bg: #232526;
+    --button-hover: #141516;
+}
+
+body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Fira Mono', 'Consolas', 'Monaco', monospace;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 5rem 1rem 2rem 1rem;
+}
+
+.value-table-container {
+    background: var(--accent);
+    padding: 2rem 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 16px #000a;
+    min-width: 320px;
+    width: 35%;
+    max-width: 500px;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.value-table-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 180px;
+}
+
+label {
+    font-size: 1rem;
+    color: #b0b0b0;
+}
+
+input[type="date"],
+select {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--fg);
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: border 0.2s;
+    width: 100%;
+}
+
+input:focus,
+select:focus {
+    border-color: #555;
+}
+
+.button-group {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 1.2rem;
+}
+
+button {
+    background: var(--button-bg);
+    color: var(--fg);
+    border: 1px solid var(--input-border);
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background: var(--button-hover);
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 2rem;
+}
+
+.value-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--input-bg);
+}
+
+.value-table th, .value-table td {
+    border: 1px solid var(--input-border);
+    padding: 0.75rem;
+    text-align: left;
+    font-size: 1rem;
+}
+
+.value-table th {
+    background: #232526;
+    color: #b0f7c1;
+    font-weight: bold;
+}
+
+.value-table td pre {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #e0e0e0;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.no-results {
+    margin-top: 2rem;
+    color: #ffb6b6;
+    background: #3d2222;
+    border: 1px solid #ff4136;
+    border-radius: 4px;
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+}
+
+/* Header customizado para dashboard e logout */
+.header-mvp {
+    width: 100vw;
+    background: var(--accent);
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px #0003;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.header-mvp .header-left,
+.header-mvp .header-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.header-mvp .header-center {
+    flex: 2;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--fg);
+    letter-spacing: 1px;
+}
+
+.header-mvp .dashboard-link,
+.header-mvp .logout-link {
+    background: var(--button-bg);
+    color: var(--fg);
+    border: 1px solid var(--input-border);
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+    text-decoration: none;
+    margin: 0 1.5rem;
+    display: inline-block;
+}
+
+.header-mvp .dashboard-link:hover,
+.header-mvp .logout-link:hover {
+    background: var(--button-hover);
+}
+
+input[type="time"] {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--fg);
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: border 0.2s;
+    width: 100%;
+}
+
+input[type="time"]:focus {
+    border-color: #555;
+}

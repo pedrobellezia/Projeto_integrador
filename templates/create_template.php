@@ -14,13 +14,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../static/css/create_template.css">
     </head>
-    <body style="display: flex; flex-direction: row;">
-        <div class="template-container" style="margin-right:10px ;">
-            <fieldset style="margin-bottom: 2rem;">
+    
+    <body>        
+        <header class="header-mvp">
+            <div class="header-left">
+                <a href="/mvp/templates/dashboard.php" class="dashboard-link">&#8592; Dashboard</a>
+            </div>
+            <div class="header-center">
+                MVP - Criar Template
+            </div>
+            <div class="header-right" style="justify-content:right;">
+                <a href="/mvp/php/logout.php" class="logout-link">Logout</a>
+            </div>
+        </header>
+        <div class="template-container">
+            <fieldset>
                 <legend>Adicionar Campos</legend>
                 <div class="form-group">
                     <label for="input-type">Tipo de Input</label>
-                    <select id="input-type" onchange="showCampos()" required>
+                    <select id="input-type" onchange="showCampos(); limpaCampos();" required>
                         <option value disabled selected>Selecione um tipo</option>
                         <option value="text">Texto</option>
                         <option value="number">Número</option>
@@ -35,7 +47,7 @@
                 </div>
 
                 <div class="form-group" id="nomeCampo" style="Display: None;">
-                    <label for="field-name">Nome do Campo</label>
+                    <label for="field-name">identificação</label>
                     <input type="text" id="field-name" required>
                 </div>
 
@@ -51,13 +63,18 @@
                         placeholder="valor1; valor2; valor3">
                 </div>
 
-                <button type="button" onclick="adicionarCampo()">Adicionar
-                    Informação</button>
+                <div style="display: flex; justify-content: center;">
+                    <button type="button" onclick="adicionarCampo()" style="margin-right: 15px;">Adicionar
+                        Informação</button>
+                    <button type="button" onclick="document.querySelector('.template-container').style.display='none'; document.querySelector('.template-final').style.display='flex';">Finalizar</button>
+                </div>
 
                 <div id="lista-campos" style="margin-top: 1rem;"></div>
-            </fieldset>            
+                <div id="input-retorno"></div>
+            </fieldset> 
+            
         </div>
-        <div class="template-container">
+        <div class="template-container template-final" style="display: None">
             <fieldset>
                 <legend>Finalizar Template</legend>
 
@@ -73,11 +90,16 @@
                 <div class="button-group">
                     <button type="button" onclick="enviarCampos()">Criar
                         Template</button>
-                    <a href="dashboard.php" class="button-link">Voltar</a>
+                    <button type="button" onclick="document.querySelector('.template-final').style.display='none'; document.querySelector('.template-container').style.display='flex';">Voltar</button>
                 </div>
+                <div id="template-retorno"></div>
             </fieldset>
         </div>
+        
+        
+
         
         <script src="../static/js/create_template.js"></script>
     </body>
 </html>
+

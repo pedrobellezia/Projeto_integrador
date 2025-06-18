@@ -19,16 +19,6 @@ body {
     min-height: 100vh;
 }
 
-header {
-    background: var(--accent);
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 8px #000a;
-    text-align: center;
-    font-weight: 600;
-    font-size: 1.3rem;
-    letter-spacing: 1px;
-}
-
 main {
     flex: 1;
     display: flex;
@@ -73,4 +63,59 @@ footer {
     padding: 1rem;
     font-size: 0.9rem;
     color: #888;
+}
+
+/* Header customizado para dashboard e logout */
+.header-mvp {
+    width: 100vw;
+    background: var(--accent);
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px #0003;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.header-mvp .header-left,
+.header-mvp .header-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.header-mvp .header-center {
+    flex: 2;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--fg);
+    letter-spacing: 1px;
+}
+
+.header-mvp .dashboard-link,
+.header-mvp .logout-link {
+    background: var(--button-bg);
+    color: var(--fg);
+    border: 1px solid var(--input-border);
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+    text-decoration: none;
+    margin: 0 1.5rem;
+    display: inline-block;
+}
+
+.header-mvp .dashboard-link:hover,
+.header-mvp .logout-link:hover {
+    background: var(--button-hover);
 }

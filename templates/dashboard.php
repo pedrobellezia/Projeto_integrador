@@ -18,11 +18,17 @@
     </head>
 
     <body style="display: flex; flex-direction: column; min-height: 100vh;">
-        <header style="display: flex; justify-content: space-between; align-items: center; padding: 16px;">
-            <span>MVP - Dashboard</span>
-            <form action="logout.php" method="post" style="margin: 0;">
-            <button type="submit">Logout</button>
-            </form>
+
+        <header class="header-mvp">
+            <div class="header-left">
+                <a href="/mvp/templates/dashboard.php" class="dashboard-link">&#8592; Dashboard</a>
+            </div>
+            <div class="header-center">
+                MVP - Criar Template
+            </div>
+            <div class="header-right" style="justify-content:right;">
+                <a href="/mvp/php/logout.php" class="logout-link">Logout</a>
+            </div>
         </header>
         <main>
             <div class="dashboard-container">

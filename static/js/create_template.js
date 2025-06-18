@@ -1,5 +1,27 @@
 const campos = [];
 
+function mostrarRetorno(divId, mensagem, tipo) {
+    const div = document.getElementById(divId);
+    div.textContent = mensagem;
+    div.className = tipo; // 'sucesso' ou 'erro'
+    div.style.display = 'block';
+    div.style.opacity = '1';
+    setTimeout(() => {
+        div.style.opacity = '0';
+        setTimeout(() => {
+            div.style.display = 'none';
+            div.textContent = '';
+        }, 400);
+    }, 3500);
+}
+
+function limpaCampos(){
+    document.getElementById('field-title').value = '';
+    document.getElementById('field-name').value = '';
+    document.getElementById('input-values').value = '';
+    document.getElementById('input-labels').value = '';
+}
+
 function showCampos() {
     const type = document.getElementById('input-type').value;
     switch (type) {
@@ -41,6 +63,10 @@ function adicionarCampo() {
     const value = document.getElementById('input-values').value|| '';
     const label = document.getElementById('input-labels').value|| '';
 
+    if (!tipo || !titulo || !nome || ((tipo === 'radio' || tipo === 'checkbox') && (!value || !label))) {
+        mostrarRetorno('input-retorno', 'Preencha todos os campos obrigatórios para adicionar o input.', 'erro');
+        return;
+    }
 
     const newCampo = {
         ...(tipo && { tipo: tipo }),
@@ -50,29 +76,31 @@ function adicionarCampo() {
         ...(label && { label: label })
     };
 
-    console.log(newCampo);
-
     campos.push(newCampo);
+
+    mostrarRetorno('input-retorno', `Input "${titulo}" foi adicionado com sucesso!`, 'sucesso');
 
     document.getElementById('input-type').value = '';
     document.getElementById('field-title').value = '';
     document.getElementById('field-name').value = '';
     document.getElementById('input-values').value = '';
-    document.getElementById('input-labels').value = '';
+    document.getElementById('input-labels').value = '';    
 }
 
 
 function enviarCampos() {
     if (campos.length === 0) {
-        alert("Adicione pelo menos um campo.");
+        mostrarRetorno('template-retorno', 'Adicione pelo menos um campo antes de salvar o template.', 'erro');
         return;
     }
 
     const template_name = document.getElementById('template-name').value.trim();
-    document.getElementById('template-name').value = '';
-    
     const template_desc = document.getElementById('template-desc').value.trim();
-    document.getElementById('template-desc').value = '';
+
+    if (!template_name) {
+        mostrarRetorno('template-retorno', 'O nome do template é obrigatório.', 'erro');
+        return;
+    }
 
     fetch('http://localhost/mvp/php/insert_values.php', {
         method: 'POST',
@@ -90,17 +118,16 @@ function enviarCampos() {
         try {
             const json = JSON.parse(text);
             if (res.ok) {
-                alert(json.message || "Template enviado com sucesso!");
+                mostrarRetorno('template-retorno', `Template "${template_name}" salvo com sucesso!`, 'sucesso');
                 campos.length = 0;
                 document.getElementById('lista-campos').innerHTML = '';
+                document.getElementById('template-name').value = '';
+                document.getElementById('template-desc').value = '';
             } else {
-                alert(json.message || "Erro ao enviar template.");
+                mostrarRetorno('template-retorno', json.message || "Erro ao enviar template.", 'erro');
             }
         } catch (e) {
-            console.error("Resposta não é JSON:", text);
-            alert("Erro inesperado do servidor.");
+            mostrarRetorno('template-retorno', "Erro inesperado do servidor.", 'erro');
         }
-    })
-
-
+    });
 }
